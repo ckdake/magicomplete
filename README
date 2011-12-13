@@ -1,3 +1,3 @@
 # Install coffeescript
-# `coffee --watch --compile jsawesomebar.coffee`
+# `coffee --watch --compile magicomplete.coffee`
 # `open index.html`

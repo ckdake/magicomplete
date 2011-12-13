@@ -2,7 +2,7 @@
 <head>
   <script src="lib/js/jquery-1.6.2.min.js"></script>
   <script src="lib/js/jquery-ui-1.8.16.custom.min.js"></script>
-  <script src="jsawesomebar.js"></script>
+  <script src="magicomplete.js"></script>
   <link rel="stylesheet" href="lib/css/ui-lightness/jquery-ui-1.8.16.custom.css" media="all" type="text/css" />
   
   <style>
@@ -55,31 +55,35 @@
     }
   </style>
   <script>
-  var data = [
-    { label: "Atlanta, GA", category: "Location" },
-    { label: "Atlanta, AK", category: "Location" },
-    { label: "Atlanta Falcons", category: "Interest" },
-    { label: "Atlanta Jones", category: "Person" },
-    { label: "Atlanta Smith", category: "Person" },
-  ];
-  
-  var magicomplete_selected = [
-    { label: "Atlanta, GA", category: "Location" },
-    { label: "Soccer", category: "Interest" }  
-  ];
-  
+  $(document).ready(function() {
+    $('.magicomplete').magicomplete({
+      selected: [
+        { label: "Atlanta, GA", category: "Location" },
+        { label: "Soccer", category: "Interest" }
+      ],
+      data: [
+        { label: "Atlanta, GA", category: "Location" },
+        { label: "Atlanta, AK", category: "Location" },
+        { label: "Atlanta Falcons", category: "Interest" },
+        { label: "Atlanta Jones", category: "Person" },
+        { label: "Atlanta Smith", category: "Person" },
+      ]
+    });
+    
+    $('#clicker').click(function() {
+      $('#values').append('<li>value: ' + $('.magicomplete').magicomplete().options + '</li>');
+    });
+  });
   </script>
 </head>
 <body>
-<h1>Hello World</h1>
+<h1>Magicomplete</h1>
 
-<div class="magicomplete">
-  <ul>
-    <li class="entry">Test<a href="#" close="close" class="close">&times;</a><br/><span class="category">Location</span></li>
-    <li><input class="search" placeholder="Atlanta">&darr;</li>
-  </ul>
-
-</div>
+<div class="magicomplete"></div>
+<br style="clear: both;"/>
+<button id="clicker">log value</button>
+<ul id="values"></ul>
+  
 
 </body>
 </html>
