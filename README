@@ -1,0 +1,3 @@
+# Install coffeescript
+# `coffee --watch --compile jsawesomebar.coffee`
+# `open index.html`

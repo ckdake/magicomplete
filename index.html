@@ -1,0 +1,85 @@
+<html>
+<head>
+  <script src="lib/js/jquery-1.6.2.min.js"></script>
+  <script src="lib/js/jquery-ui-1.8.16.custom.min.js"></script>
+  <script src="jsawesomebar.js"></script>
+  <link rel="stylesheet" href="lib/css/ui-lightness/jquery-ui-1.8.16.custom.css" media="all" type="text/css" />
+  
+  <style>
+    .ui-autocomplete-category {
+      font-weight: bold;
+      padding: .2em .4em;
+      margin: .8em 0 .2em;
+      line-height: 1.5;
+    }
+    
+    .ui-menu-item a {
+      padding-left: 20px !important;
+    }
+    
+    .close {
+      float: right;
+      color: #000000;
+      font-size: 20px;
+      font-weight: bold;
+      line-height: 13.5px;
+      text-shadow: 0 1px 0 #ffffff;
+      filter: alpha(opacity=20);
+      -khtml-opacity: 0.2;
+      -moz-opacity: 0.2;
+      opacity: 0.2;
+      text-decoration: none;
+    }
+    .close:hover {
+      color: #000000;
+      text-decoration: none;
+      filter: alpha(opacity=40);
+      -khtml-opacity: 0.4;
+      -moz-opacity: 0.4;
+      opacity: 0.4;
+    }
+
+    .magicomplete ul {
+      position: relative;
+    }
+    .magicomplete ul li {
+      display: block;
+      float: left;
+      border: 1px solid #000;
+      padding: 8px;
+    }
+    .magicomplete ul li span {
+      float: right;
+      color: #666;
+      font-size: 0.8em;
+    }
+  </style>
+  <script>
+  var data = [
+    { label: "Atlanta, GA", category: "Location" },
+    { label: "Atlanta, AK", category: "Location" },
+    { label: "Atlanta Falcons", category: "Interest" },
+    { label: "Atlanta Jones", category: "Person" },
+    { label: "Atlanta Smith", category: "Person" },
+  ];
+  
+  var magicomplete_selected = [
+    { label: "Atlanta, GA", category: "Location" },
+    { label: "Soccer", category: "Interest" }  
+  ];
+  
+  </script>
+</head>
+<body>
+<h1>Hello World</h1>
+
+<div class="magicomplete">
+  <ul>
+    <li class="entry">Test<a href="#" close="close" class="close">&times;</a><br/><span class="category">Location</span></li>
+    <li><input class="search" placeholder="Atlanta">&darr;</li>
+  </ul>
+
+</div>
+
+</body>
+</html>
