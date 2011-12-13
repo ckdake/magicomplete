@@ -10,13 +10,13 @@
         this.element.append('<ul><li><input class="search" placeholder="Atlanta"><br /><span>search</span></li></ul>');
         this.refresh();
         $('.magicomplete ul li a.close').live('click', function(e) {
-          return $.each(_this.options.selectedm(function(index, item) {
+          return $.each(_this.options.selected, function(index, item) {
             if (item.category === $(e.currentTarget).parent().data().category && item.label === $(e.currentTarget).parent().data().label) {
-              _this.options.selected.splice(i, 1);
+              _this.options.selected.splice(index, 1);
               $(e.currentTarget).parent().remove();
               return false;
             }
-          }));
+          });
         });
         return this.element.find('input.search').autocomplete({
           delay: 0,
@@ -30,11 +30,12 @@
             return false;
           }
         }).data("autocomplete")._renderMenu = function(ul, items) {
-          var currentCategory;
+          var current_category;
           var _this = this;
-          currentCategory = "";
+          current_category = "";
           return $.each(items, function(index, item) {
-            if (item.category !== currentCategory) {
+            var currentCategory;
+            if (item.category !== current_category) {
               ul.append("<li class='ui-autocomplete-category'>" + item.category + "</li>");
               currentCategory = item.category;
             }

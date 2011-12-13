@@ -8,9 +8,9 @@ jQuery ->
       @.element.append('<ul><li><input class="search" placeholder="Atlanta"><br /><span>search</span></li></ul>')
       @.refresh()
       $('.magicomplete ul li a.close').live('click', (e) =>
-        $.each @options.selectedm (index, item) =>
+        $.each @options.selected, (index, item) =>
           if item.category == $(e.currentTarget).parent().data().category && item.label == $(e.currentTarget).parent().data().label
-            @options.selected.splice(i, 1)
+            @options.selected.splice(index, 1)
             $(e.currentTarget).parent().remove()
             false
       )
