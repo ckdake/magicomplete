@@ -3,10 +3,11 @@ jQuery ->
   
   $.widget( "custom.magicomplete", {
     options: {
-      data: [],
+      data: []
       selected: []
     }
     _create: ->
+      console.log(@.options.selected)
       @.element.append '<ul></ul>'
       @.element.find('ul').append '<li><input class="search" placeholder="Atlanta"><br /><span>search</span></li>'
       @.refresh()
@@ -33,8 +34,8 @@ jQuery ->
             ul.append "<li class='ui-autocomplete-category'>" + item.category + "</li>"
             currentCategory = item.category
           self._renderItem ul, item
-    _value: ->
-      'bacon'
+    value: ->
+      @options.selected
     destroy: ->
       @empty()
     refresh: ->

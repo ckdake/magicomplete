@@ -71,7 +71,10 @@
     });
     
     $('#clicker').click(function() {
-      $('#values').append('<li>value: ' + $('.magicomplete').magicomplete().options + '</li>');
+      $.each($('.magicomplete').magicomplete('value'), function(index, value) {
+        $('#values').append('[label: "' + value.label + '", category: "' + value.category + '"]')
+      });
+      $('#values').append('<br />');
     });
   });
   </script>
@@ -82,7 +85,7 @@
 <div class="magicomplete"></div>
 <br style="clear: both;"/>
 <button id="clicker">log value</button>
-<ul id="values"></ul>
+<div id="values"></div>
   
 
 </body>

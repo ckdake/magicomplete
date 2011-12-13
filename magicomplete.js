@@ -7,6 +7,7 @@
       },
       _create: function() {
         var widget;
+        console.log(this.options.selected);
         this.element.append('<ul></ul>');
         this.element.find('ul').append('<li><input class="search" placeholder="Atlanta"><br /><span>search</span></li>');
         this.refresh();
@@ -45,8 +46,8 @@
           });
         };
       },
-      _value: function() {
-        return 'bacon';
+      value: function() {
+        return this.options.selected;
       },
       destroy: function() {
         return this.empty();
