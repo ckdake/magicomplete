@@ -6,43 +6,39 @@
         selected: []
       },
       _create: function() {
-        var widget;
-        console.log(this.options.selected);
-        this.element.append('<ul></ul>');
-        this.element.find('ul').append('<li><input class="search" placeholder="Atlanta"><br /><span>search</span></li>');
+        var _this = this;
+        this.element.append('<ul><li><input class="search" placeholder="Atlanta"><br /><span>search</span></li></ul>');
         this.refresh();
-        widget = this;
         $('.magicomplete ul li a.close').live('click', function(e) {
-          var i, _ref;
-          for (i = 0, _ref = widget.options.selected.length - 1; 0 <= _ref ? i <= _ref : i >= _ref; 0 <= _ref ? i++ : i--) {
-            if (widget.options.selected[i].category === $(e.currentTarget).parent().data().category && widget.options.selected[i].label === $(e.currentTarget).parent().data().label) {
-              widget.options.selected.splice(i, 1);
+          return $.each(_this.options.selectedm(function(index, item) {
+            if (item.category === $(e.currentTarget).parent().data().category && item.label === $(e.currentTarget).parent().data().label) {
+              _this.options.selected.splice(i, 1);
               $(e.currentTarget).parent().remove();
               return false;
             }
-          }
+          }));
         });
         return this.element.find('input.search').autocomplete({
           delay: 0,
-          source: widget.options.data,
+          source: this.options.data,
           select: function(event, ui) {
-            widget.options.selected.push({
+            _this.options.selected.push({
               label: ui.item.label,
               category: ui.item.category
             });
-            widget.refresh();
+            _this.refresh();
             return false;
           }
         }).data("autocomplete")._renderMenu = function(ul, items) {
-          var currentCategory, self;
-          self = this;
+          var currentCategory;
+          var _this = this;
           currentCategory = "";
           return $.each(items, function(index, item) {
             if (item.category !== currentCategory) {
               ul.append("<li class='ui-autocomplete-category'>" + item.category + "</li>");
               currentCategory = item.category;
             }
-            return self._renderItem(ul, item);
+            return _this._renderItem(ul, item);
           });
         };
       },
